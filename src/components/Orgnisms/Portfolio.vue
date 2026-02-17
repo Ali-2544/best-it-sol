@@ -48,11 +48,16 @@ const setupStickyScroll = () => {
     const header = portfolioSection.value.querySelector('.portfolio-content');
     if (!header) return;
 
+    const viewAllProjects = portfolioSection.value.querySelector('.view-all-projects');
+    
     const headerHeight = header.offsetHeight;
     const cardHeight = cards[0].offsetHeight;
     const gap = 20;
     const stickyTop = headerHeight;
-    const totalScrollHeight = headerHeight + (cardHeight * cards.length) + (gap * (cards.length - 1)) + 100;
+    const viewAllHeight = viewAllProjects ? viewAllProjects.offsetHeight : 80;
+    const extraSpacing = 200; // Extra spacing to prevent overlap
+    
+    const totalScrollHeight = headerHeight + (cardHeight * cards.length) + (gap * (cards.length - 1)) + viewAllHeight + extraSpacing;
 
     portfolioSection.value.style.height = `${totalScrollHeight}px`;
 
@@ -63,9 +68,20 @@ const setupStickyScroll = () => {
 };
 
 onMounted(() => {
+    // Run immediately
+    setupStickyScroll();
+    
+    // Run after a short delay to ensure DOM is ready
     setTimeout(() => {
         setupStickyScroll();
     }, 200);
+    
+    // Run after window load to ensure all assets are loaded (important for production)
+    window.addEventListener('load', () => {
+        setTimeout(() => {
+            setupStickyScroll();
+        }, 100);
+    });
 
     window.addEventListener('resize', setupStickyScroll);
 });
@@ -107,9 +123,10 @@ onUnmounted(() => {
 .portfolio {
     position: relative;
     padding: 80px 20px;
-    margin-bottom: 140px;
+    padding-bottom: 120px;
+    margin-bottom: 200px;
     background: #000;
-
+    overflow: visible;
 }
 
 .portfolio-wrapper {
@@ -173,7 +190,9 @@ onUnmounted(() => {
 .view-all-projects {
     display: flex;
     position: relative;
-    z-index: 999;
+    z-index: 10;
+    margin-top: 40px;
+    padding-top: 40px;
 }
 
 @media (max-width: 768px) {

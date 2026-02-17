@@ -226,9 +226,10 @@ onUnmounted(() => {
 
 <style scoped>
 .testimonials { 
-    padding: 70px 20px;
+    padding: 100px 20px 70px 20px;
     position: relative;
     overflow: hidden;
+    margin-top: 0;
 }
 
 .testimonials::before {
