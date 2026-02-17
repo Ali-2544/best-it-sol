@@ -95,7 +95,7 @@
                     <span class="badge-text">30 Websites Designed</span>
                 </div>
                 <div class="badge badge-bottom-right">
-                    <span class="badge-text">1200+ videos and animations</span>
+                    <span class="badge-text">1200+  videos and animations</span>
                 </div>
             </div>
         </div>
