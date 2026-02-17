@@ -3,7 +3,11 @@ import Header from '@/components/Orgnisms/Header.vue';
 import Hero from '@/components/Orgnisms/Hero.vue';
 import Services from '@/components/Orgnisms/Services.vue';
 import Steps2 from '@/components/Orgnisms/steps2.vue';
+import Faq from '@/components/Orgnisms/Faq.vue';
+import Testimonials from '@/components/Orgnisms/Testimonials.vue';
+import Portfolio from '@/components/Orgnisms/Portfolio.vue';
 import { onMounted } from 'vue';
+import Footer from '@/components/Orgnisms/Footer.vue';
 
 
 onMounted(() => {
@@ -32,6 +36,10 @@ onMounted(() => {
       </section>
     </div>
     <Steps2 />
+    <Portfolio />
+    <Testimonials />
+    <Faq />
+    <Footer />
   </template>
   
 

@@ -15,25 +15,8 @@
                 <div class="badge badge-top-left">
                     <span class="badge-text">8455 Social Designs</span>
                 </div>
-                <div class="badge badge-bottom-left">
+                <div class="badge badge-top-middle">
                     <span class="badge-text">600+ Web Pages Designed</span>
-                </div>
-                <div class="badge badge-top-right">
-                    <span class="badge-text">30 Websites Designed</span>
-                </div>
-                <div class="badge badge-bottom-right">
-                    <span class="badge-text">1200+ videos and animations</span>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="divider-line"></div>
-    <div class="steps2-wrapper max-w-[1200px] mx-auto relative">
-        <div class="design-section">
-            <h2 class="design-heading">DEVELOPMENT</h2>
-            <div class="stats-badges">
-                <div class="badge badge-top-left">
-                    <span class="badge-text">8455 Social Designs</span>
                 </div>
                 <div class="badge badge-bottom-left">
                     <span class="badge-text">600+ Web Pages Designed</span>
@@ -58,6 +41,9 @@
                 <div class="badge badge-bottom-left">
                     <span class="badge-text">600+ Web Pages Designed</span>
                 </div>
+                <div class="badge badge-top-middle">
+                    <span class="badge-text">600+ Web Pages Designed</span>
+                </div>
                 <div class="badge badge-top-right">
                     <span class="badge-text">30 Websites Designed</span>
                 </div>
@@ -70,12 +56,39 @@
     <div class="divider-line"></div>
     <div class="steps2-wrapper max-w-[1200px] mx-auto relative">
         <div class="design-section">
+            <h2 class="design-heading">DEVELOPMENT</h2>
+            <div class="stats-badges">
+                <div class="badge badge-top-left">
+                    <span class="badge-text">8455 Social Designs</span>
+                </div>
+                <div class="badge badge-bottom-left">
+                    <span class="badge-text">600+ Web Pages Designed</span>
+                </div>
+                <div class="badge badge-top-middle">
+                    <span class="badge-text">600+ Web Pages Designed</span>
+                </div>
+                <div class="badge badge-top-right">
+                    <span class="badge-text">30 Websites Designed</span>
+                </div>
+                <div class="badge badge-bottom-right">
+                    <span class="badge-text">1200+ videos and animations</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="divider-line"></div>
+    <div class="steps2-wrapper max-w-[1200px] mx-auto relative">
+        <div class="design-section">
             <h2 class="design-heading">LAUNCH</h2>
             <div class="stats-badges">
                 <div class="badge badge-top-left">
                     <span class="badge-text">8455 Social Designs</span>
                 </div>
                 <div class="badge badge-bottom-left">
+                    <span class="badge-text">600+ Web Pages Designed</span>
+                </div>
+                <div class="badge badge-top-middle">
                     <span class="badge-text">600+ Web Pages Designed</span>
                 </div>
                 <div class="badge badge-top-right">
@@ -106,7 +119,7 @@
 }
 
 .steps2-wrapper{
-    background-color: black;
+    background-color: rgba(0, 0, 0, 0);
 }
 
 .steps2 {
@@ -120,6 +133,19 @@
     height: 1px;
     background: rgba(255, 255, 255, 0.2);
     margin: 40px 0;
+}
+.steps2::before {
+    content: '';
+    position: absolute;
+    top: 200px;
+    left: -200px;
+    width: 1000px;
+    height: 800px;
+    background: linear-gradient(135deg, #8b005d6a, #8b005d69, transparent 70%);
+    border-radius: 100%;
+    pointer-events: none;
+    z-index: 0;
+    filter: blur(60px);
 }
 
 .design-section {
@@ -145,7 +171,7 @@
     margin-bottom: -200px;
 }
 
-.design-heading:hover {
+.design-section:hover .design-heading {
     color: rgba(255, 255, 255, 0.25);
 }
 
@@ -196,9 +222,21 @@
 }
 
 .badge-bottom-right {
-    bottom: 20%;
+    bottom: 10%;
     right: 10%;
     animation-delay: 0.4s;
+}
+
+.badge-top-middle {
+    top: 40%;
+    left: 40%;
+    animation-delay: 0.5s;
+}
+
+.badge-bottom-middle {
+    bottom: 40%;
+    left: 80%;
+    animation-delay: 0.6s;
 }
 
 .badge-text {
