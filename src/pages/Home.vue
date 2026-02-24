@@ -8,6 +8,9 @@ import Testimonials from '@/components/Orgnisms/Testimonials.vue';
 import Portfolio from '@/components/Orgnisms/Portfolio.vue';
 import { onMounted } from 'vue';
 import Footer from '@/components/Orgnisms/Footer.vue';
+import About from '../components/Orgnisms/About.vue';
+import { SlowMo, SplitText } from 'gsap/all';
+import Skills from '@/components/Orgnisms/Skills.vue';
 
 
 onMounted(() => {
@@ -22,26 +25,26 @@ onMounted(() => {
 </script>
 
 <template>
-    <div class="page">
-      <header class="header">
-        <Header />
-      </header>
-  
-      <section class="hero">
-        <Hero />
-      </section>
-  
-      <section class="services">
-        <Services />
-      </section>
-    </div>
-    <Steps2 />
-    <Portfolio />
-    <Testimonials />
-    <Faq />
-    <Footer />
-  </template>
-  
+  <div class="page">
+    <header class="header">
+      <Header />
+    </header>
+    <section class="hero">
+      <Hero />
+    </section>
+    <section class="services">
+      <About />
+    </section>
+  </div>
+  <Services />
+  <Skills />
+  <Steps2 />
+  <Portfolio />
+  <Testimonials />
+  <Faq />
+  <Footer />
+</template>
+
 
 <style scoped>
 .page {
@@ -51,7 +54,7 @@ onMounted(() => {
 
 .header {
 
-  
+
   position: sticky;
   top: 0;
   z-index: 0;
@@ -67,5 +70,4 @@ onMounted(() => {
   position: relative;
   z-index: 10;
 }
-
 </style>

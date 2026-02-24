@@ -8,16 +8,23 @@
 <div class="header-wrapper flex max-w-[1200px] mx-auto justify-between items-center ">
   <div class="left flex items-center gap-4">
     <div class="logo">
-      <h3 class="logo text-[24px] font-[600]" >BEST IT SOL</h3>
+      <h3 class="logo text-[24px] font-[600]" >ALI MEHTAB</h3>
     </div>
   </div>
   <div class="menu text-white ">
       <ul class="flex items-center gap-[16px]">
-        <li class="list-none text-[16px] cursor-pointer nav-link">Home</li>
+        <li class="list-none text-[16px] cursor-pointer nav-link">
+          <router-link to="/" class="nav-link">Home</router-link>
+        </li>
+        <li class="list-none text-[16px] cursor-pointer nav-link">
+          <router-link to="/author" class="nav-link">Author</router-link>
+        </li>
         <li class="list-none text-[16px] cursor-pointer nav-link">Services</li>
         <li class="list-none text-[16px] cursor-pointer nav-link">Projects</li>
         <li class="list-none text-[16px] cursor-pointer nav-link">Blog</li>
-        <li class="list-none text-[16px] cursor-pointer nav-link">About</li>
+        <li class="list-none text-[16px] cursor-pointer nav-link">
+          <router-link to="/about" class="nav-link">About</router-link>
+        </li>
         <li class="list-none text-[16px] cursor-pointer nav-link">Contact Us</li>
       </ul>
     </div>
@@ -38,6 +45,16 @@
 }
 .nav-link {
     color: white;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+    color: #0066FF;
+}
+
+.nav-link.router-link-active {
+    color: #0066FF;
 }
 .header_cta {
   position: relative;

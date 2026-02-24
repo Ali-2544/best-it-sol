@@ -5,7 +5,7 @@
 <template>
 <section class="steps2 bg-[black]">
     <h2 class="title_text text-center uppercase tracking-[20px] mb-[40px] text-[48px] font-bold text-white">
-              How <span class="section_title">We Work</span>
+              How <span class="section_title">I Work</span>
             </h2>
     <div class="divider-line"></div>
     <div class="steps2-wrapper max-w-[1200px] mx-auto relative">

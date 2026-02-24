@@ -4,7 +4,15 @@ export default {
       "./src/**/*.{vue,js,ts,jsx,tsx}",
     ],
     theme: {
-      extend: {},
+      extend: {
+        colors: {
+          'navy': '#00296b',
+          'navy-light': '#f8f9ff',
+        },
+        fontFamily: {
+          'style-script': ['Style Script', 'cursive'],
+        },
+      },
     },
   }
   

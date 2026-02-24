@@ -41,7 +41,6 @@ const props = defineProps({
     </div>
 </template>
 
-
 <style scoped>
 
 .portfolio_card {
