@@ -38,7 +38,7 @@
                     </svg></a>
             </div>
             <div class="footer-content-bottom ">
-                <h3 class="footer-title  text-[150px] ">BEST IT SOL</h3>
+                <h3 class="footer-title  text-[150px] ">ALI MEHTAB</h3>
             </div>
         </div>
     </footer>

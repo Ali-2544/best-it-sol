@@ -1,4 +1,6 @@
 <script setup>
+import { ref, onMounted } from 'vue';
+
 const props = defineProps({
     icon: {
         type: String,
@@ -11,12 +13,54 @@ const props = defineProps({
     description: {
         type: String,
         required: true
+    },
+    percentage: {
+        type: Number,
+        default: 0
     }
 })
+
+const isVisible = ref(false);
+const animatedPercentage = ref(0);
+const cardRef = ref(null);
+
+onMounted(() => {
+    const observer = new IntersectionObserver(
+        (entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting && !isVisible.value) {
+                    isVisible.value = true;
+                    animateProgressBar();
+                }
+            });
+        },
+        { threshold: 0.2 }
+    );
+
+    if (cardRef.value) {
+        observer.observe(cardRef.value);
+    }
+});
+
+const animateProgressBar = () => {
+    let current = 0;
+    const target = props.percentage;
+    const duration = 2000; // 2 seconds
+    const increment = target / (duration / 16); // 60fps
+    
+    const timer = setInterval(() => {
+        current += increment;
+        if (current >= target) {
+            current = target;
+            clearInterval(timer);
+        }
+        animatedPercentage.value = Math.round(current);
+    }, 16);
+};
 </script>
 
 <template>
-    <div class="service_card  hover:scale-105 transition-all duration-300 flex flex-col items-left justify-between w-[284px] min-h-[450px] bg-gray-800 rounded-lg p-4">
+    <div ref="cardRef" class="service_card hover:scale-105 transition-all duration-300 flex flex-col items-left justify-between w-[284px] min-h-[450px] bg-gray-800 rounded-lg p-4">
         <div class="icon">
             <img class="w-[50px] h-[50px]" :src="icon" alt="icon">
         </div>
@@ -26,8 +70,19 @@ const props = defineProps({
         <div class="description">
             <p class="text-[16px] text_white font-normal">{{ description }}</p>
         </div>  
-        <div class="button">
-            <button class="lean_btn hover:scale-105 transition-all duration-300 py-[6px] pl-[14px] pr-[6px] cursor-pointer bg-transparent border-[1px] text_white border-[#ffff] rounded-[30px] flex items-center justify-between w-[100%] text-[16px] font-bold">Learn More <span class="w-[40px] flex items-center justify-center bg-black rounded-full" > <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6"><path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" /></svg></span></button>
+        <div class="progress-section">
+            <div class="progress-header">
+                <span class="progress-label">Proficiency</span>
+                <span class="progress-percentage">
+                    {{ animatedPercentage }}%
+                </span>
+            </div>
+            <div class="progress-bar-container">
+                <div 
+                    class="progress-bar"
+                    :style="{ width: isVisible ? percentage + '%' : '0%' }"
+                ></div>
+            </div>
         </div>
     </div>
 </template>
@@ -43,6 +98,7 @@ const props = defineProps({
   color: white;
   overflow: hidden;
   box-shadow: 0 4px 30px rgb(255 255 255 / 14%);
+  position: relative;
 }
 
 .service_card::before {
@@ -58,24 +114,52 @@ const props = defineProps({
     overflow: hidden;
 }
 
-.lean_btn:hover {
-    background: linear-gradient(135deg, #990167, #0C0256);
-
+.progress-section {
+    width: 100%;
 }
 
-.lean_btn span {
-    width: 40px;
+.progress-header {
     display: flex;
-    background-color: white;
+    justify-content: space-between;
     align-items: center;
-    justify-content: center;
-    font-weight: 900;
+    margin-bottom: 12px;
 }
 
-.lean_btn svg {
-    width: 20px;
-    font-weight: 900;
-    color: black;
+.progress-label {
+    color: white;
+    font-size: 14px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.progress-percentage {
+    color: white;
+    font-size: 16px;
+    font-weight: 700;
+    background: linear-gradient(135deg, #7d0158, #120059);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    -webkit-text-stroke: 1px white;
+}
+
+.progress-bar-container {
+    width: 100%;
+    height: 12px;
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative;
+}
+
+.progress-bar {
+    height: 100%;
+    background: linear-gradient(90deg, #7d0158, #8b005d, #a0006d);
+    border-radius: 10px;
+    transition: width 2s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    box-shadow: 0 0 15px rgba(125, 1, 88, 0.4);
 }
 
 </style>

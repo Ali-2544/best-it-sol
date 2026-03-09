@@ -20,22 +20,24 @@ onMounted(() => {
     observer.observe(section);
   }
 });
+
+
 </script>
 
-<template>
+ <template>
   <section class="about bg-[black]">
     <div class="about-wrapper max-w-[1200px] mx-auto px-5">
       <div class="about-section py-[70px]" :class="{ 'fade-in': isVisible }">
         <div class=" flex flex-col ">
           <div class="flex justify-between pb-[50px]">
             <div class="">
-              <h3>About Me</h3>
+              <span class="about_title text-[20px] text-[#ffff] font-bold">About Me</span>
               <h2
               class="title_text flex text-center uppercase gap-[7px] tracking-[4px] mb-[40px] text-[25px] font-bold text-white">
               Creative strategy for <span class="section_title">UNIQUE brands</span>
             </h2>
             </div>
-            <p class="text-[#ffff] text-center text-lg w-[500px] leading-relaxed mb-6">
+            <p class="text-[#ffff] text-right text-lg w-[500px] leading-relaxed mb-6">
               I'm a passionate full-stack developer with expertise in modern web technologies.
               I specialize in creating beautiful, responsive, and high-performance web applications
               that deliver exceptional user experiences.
@@ -144,6 +146,33 @@ onMounted(() => {
 .about-wrapper {
   position: relative;
   z-index: 1;
+}
+
+.about_title {
+  position: relative;
+  margin-left: 40px;
+}
+
+.about_title::before{
+  content: ' ';
+  position: absolute;
+  top: 50%;
+  left: -40px;
+  width: 30px;
+  height: 2px;
+  background: white;
+  pointer-events: none;
+}
+
+.about_title::after{
+  content: ' ';
+  position: absolute;
+  top: 50%;
+  right: -40px;
+  width: 30px;
+  height: 2px;
+  background: white;
+  pointer-events: none;
 }
 
 .section_title {

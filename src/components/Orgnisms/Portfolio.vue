@@ -6,34 +6,47 @@ const portfolioCards = ref([
     {
         image: "/relocate_now.png",
         title: "Relocate Now",
-        description: "We create fully responsive, secure, and high-performing WordPress websites. Custom designs, SEO-ready structure, and optimized performance help businesses establish a strong online presence and grow effectively.",
+        description: "A comprehensive platform designed to help people seamlessly relocate from one place to another, providing essential services and resources for smooth transitions.",
         bgColor: "#DFCCB4",
         titleColor: "black",
-        descriptionColor: "black"
+        descriptionColor: "black",
+        link: "https://www.relocatenow.io/"
     },
     {
-        image: "/darkness_unlimited.png",
-        title: "Darkness Unlimited",
-        description: "We create fully responsive, secure, and high-performing WordPress websites. Custom designs, SEO-ready structure, and optimized performance help businesses establish a strong online presence and grow effectively.",
-        bgColor: "#E93B17",
+        image: "/strap-up.png",
+        title: "Strap up",
+        description: "An exclusive online marketplace dedicated to buying and selling luxury watches, connecting collectors and enthusiasts with premium timepieces.",
+        descriptionColor: "white",
         titleColor: "white",
-        descriptionColor: "white"
+        bgColor: "#4f4f4f",
+        link: "https://www.strap-up.com/"
     },
     {
-        image: "/IES.png",
-        title: "IES",
-        description: "We create fully responsive, secure, and high-performing WordPress websites. Custom designs, SEO-ready structure, and optimized performance help businesses establish a strong online presence and grow effectively.",
+        image: "/miegroups.png",
+        title: "MIE Groups",
+        description: "A leading events management company based in Dubai, specializing in organizing major international trade events including CTW Global, CTW Kenya, and China Trade Week. Successfully delivered 28 websites for their diverse portfolio of events.",
+        bgColor: "#a5181d",
+        titleColor: "white",
+        descriptionColor: "white",
+        link: "https://www.miegroups.com/"
+    },
+    {
+        image: "/apex.png",
+        title: "Us property Expo",
+        description: "A premier expo and exhibition company specializing in showcasing properties across the United States, connecting real estate professionals and potential buyers.",
         bgColor: "#012F6D",
         titleColor: "white",
-        descriptionColor: "white"
+        descriptionColor: "white",
+        link: "https://www.uspropertyexpo.com/"
     },
     {
-        image: "/xuxa_pakistan.png",
-        title: "Xuxa Pakistan",
-        description: "We create fully responsive, secure, and high-performing WordPress websites. Custom designs, SEO-ready structure, and optimized performance help businesses establish a strong online presence and grow effectively.",
-        bgColor: "#D5EED1",
+        image: "/peugeot.png",
+        title: "Peugeot Dubai",
+        description: "A renowned international car brand with a rich heritage, offering innovative and stylish vehicles. The Dubai dealership showcases the latest Peugeot models and exceptional customer service.",
+        bgColor: "#ffffff",
         titleColor: "black",
-        descriptionColor: "black"
+        descriptionColor: "black",
+        link: "https://dubai.peugeot.com/"
     }
 ]);
 
@@ -55,7 +68,7 @@ const setupStickyScroll = () => {
     const gap = 20;
     const stickyTop = headerHeight;
     const viewAllHeight = viewAllProjects ? viewAllProjects.offsetHeight : 80;
-    const extraSpacing = 200; // Extra spacing to prevent overlap
+    const extraSpacing = 200; 
     
     const totalScrollHeight = headerHeight + (cardHeight * cards.length) + (gap * (cards.length - 1)) + viewAllHeight + extraSpacing;
 
@@ -68,15 +81,12 @@ const setupStickyScroll = () => {
 };
 
 onMounted(() => {
-    // Run immediately
     setupStickyScroll();
     
-    // Run after a short delay to ensure DOM is ready
     setTimeout(() => {
         setupStickyScroll();
     }, 200);
     
-    // Run after window load to ensure all assets are loaded (important for production)
     window.addEventListener('load', () => {
         setTimeout(() => {
             setupStickyScroll();
@@ -103,17 +113,8 @@ onUnmounted(() => {
                 <div v-for="(card, index) in portfolioCards" :key="index" class="portfolio-card-item pb-[30px]">
                     <PortfolioCard :image="card.image" :title="card.title" :description="card.description"
                         :bgColor="card.bgColor" :titleColor="card.titleColor"
-                        :descriptionColor="card.descriptionColor" />
+                        :descriptionColor="card.descriptionColor" :link="card.link" />
                 </div>
-            </div>
-            <div class="view-all-projects text-center items-center justify-center  py-[20px]">
-                <a href="https://bestitsol.com/portfolio" class="link">View All Projects <svg
-                        xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                        stroke="currentColor" class="size-6">
-                        <path stroke-linecap="round" stroke-linejoin="round"
-                            d="M17.25 8.25 21 12m0 0-3.75 3.75M21 12H3" />
-                    </svg>
-                </a>
             </div>
         </div>
     </section>
@@ -123,8 +124,6 @@ onUnmounted(() => {
 .portfolio {
     position: relative;
     padding: 80px 20px;
-    padding-bottom: 120px;
-    margin-bottom: 200px;
     background: #000;
     overflow: visible;
 }
@@ -175,25 +174,6 @@ onUnmounted(() => {
     rotate: -30deg;
 }
 
-.view-all-projects a:hover svg {
-    rotate: 0deg;
-    transition: all 0.3s ease;
-}
-.view-all-projects a {
-    display: flex;
-    font-size: 17px;
-    align-items: center;
-    text-decoration: none !important;
-    color: white;
-}
-
-.view-all-projects {
-    display: flex;
-    position: relative;
-    z-index: 10;
-    margin-top: 40px;
-    padding-top: 40px;
-}
 
 @media (max-width: 768px) {
     .portfolio {

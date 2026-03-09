@@ -11,6 +11,7 @@ import Footer from '@/components/Orgnisms/Footer.vue';
 import About from '../components/Orgnisms/About.vue';
 import { SlowMo, SplitText } from 'gsap/all';
 import Skills from '@/components/Orgnisms/Skills.vue';
+import Contact from '@/components/Orgnisms/Contact.vue';
 
 
 onMounted(() => {
@@ -37,11 +38,11 @@ onMounted(() => {
     </section>
   </div>
   <Services />
-  <Skills />
   <Steps2 />
   <Portfolio />
   <Testimonials />
   <Faq />
+  <Contact />
   <Footer />
 </template>
 
